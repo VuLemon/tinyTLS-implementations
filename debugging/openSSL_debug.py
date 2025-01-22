@@ -7,23 +7,23 @@
 
 import socket
 import time
+from urllib.parse import urlparse
 
-# Host an openSSL server in localhost
-host = '127.0.0.1'
-port = 4433
+# Parse the URL to get the hostname
+parsed_url = urlparse('https://www.cloudflare.com/')
+host = parsed_url.hostname  # This will extract 'www.brandeis.edu'
+port = 443  # Standard HTTPS port
 
-# Run the tinyTLS inplementation, paste the clientHello here to test
+# Your existing client_hello remains the same
 client_hello = bytes.fromhex(
-    '16 03 01 00 92 01 00 00 8e 03 03 e9 0d ca 92 54 25 a4 38 c6 03 96 70 6d f4 2f 31 40 17 81 09 bf 9f d1 9b a8 3e a2 cd 4f 56 e6 df 00 00 02 13 01 01 00 00 63 00 00 00 0e 00 0c 00 00 09 6c 6f 63 61 6c 68 6f 73 74 00 0a 00 04 00 02 00 1d 00 0d 00 14 00 12 04 03 08 04 04 01 05 03 08 05 05 01 08 06 06 01 02 01 00 33 00 26 00 24 00 1d 00 20 38 72 2b 87 8c 43 73 4c ed 9c 47 21 82 d4 fe 62 ec 74 ad f8 5a 97 ae 34 07 ce 53 2e 1f 41 51 01 00 2b 00 03 02 03 04'
-
-
+    '16 03 01 00 9b 01 00 00 97 03 03 d6 b8 ec be 4e 54 ee 10 24 26 00 0f 44 b3 b3 d5 37 aa 64 b5 12 5b 6c 47 1e fb 10 56 f8 d9 64 96 00 00 02 13 02 01 00 00 6c 00 00 00 17 00 15 00 00 12 77 77 77 2e 63 6c 6f 75 64 66 6c 61 72 65 2e 63 6f 6d 00 0a 00 04 00 02 00 1d 00 0d 00 14 00 12 04 03 08 04 04 01 05 03 08 05 05 01 08 06 06 01 02 01 00 33 00 26 00 24 00 1d 00 20 df 3d 3e 88 58 60 b3 89 5a e4 70 47 87 e3 b2 b4 bb 59 dc b9 c1 00 b9 16 5d ac ae 0f a6 d5 86 2b 00 2b 00 03 02 03 04'
 )
 
 try:
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.settimeout(5)
         print(f"Attempting to connect to {host}:{port}")
-        s.connect((host, port))
+        s.connect((host, port))  # Now passing a proper (host, port) tuple
         print("Connected to server.")
         
         bytes_sent = s.sendall(client_hello)
