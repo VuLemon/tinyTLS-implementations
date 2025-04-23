@@ -1,5 +1,32 @@
-# Tiny-TLS 1.3 Toy Implementation for COSI107a, Spring 2025, version 0.1
+# TLS 1.3 toy implementation
+## 1. 🔍 Overview
 
-This document contains the implementation of a toy version of TLS 1.3, to be used as material for Brandeis' COSI107a course. The goal is to implement a minimalist version of TLS 1.3 that can communicate with a server using the protocol.
+A minimal, working client-side MVP of the TLS 1.3 protocol. The implementation aims to highlight the core components of a complete handshake for easy understanding and potential replication. This can serve as the skeleton on which custom TLS protocols can be built.
 
-This is a work in progress, and it is expected that changes will be made to the protocol as we move forward
+## 2. 🏗️ Features
+
+- ✅ TLS 1.3 Handshake (ClientHello → Finished)
+
+- ✅ HKDF-based Key Schedule
+
+- ✅ AEAD encryption using AES-GCM
+
+- ✅ Record Layer Framing
+
+- ✅ Basic test client/server interaction  
+
+Currently, the skeleton retrieves an HTML representing the frontpage of a website, as proof of successful handshake. This can be extended based on project needs.
+
+## 3. 🛠️ How to Build / Run
+- Using console command:  
+```bash
+git clone https://github.com/VuLemon/tinyTLS-implementations
+/path/to/your/jupyter nbconvert --to notebook --execute tinyTLS.ipynb --inplace
+```  
+- Alternatively, run the .ipynb in your preferred editor
+
+![Demo GIF](asset/demo1.gif)
+
+## 4. 🚧 Future plans
+- Develop custom test server to accompany client  
+- Develop testing suite + custom error messages for easy debug

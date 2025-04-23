@@ -1,3 +1,3 @@
-hex_dump = "82 a5 8b 70 b7 a7 bc 6b 6e 81 e8 9e 2c 3f 3d 50 dc 24 9f 5d 12 a6 65 d8 00 7e 15 6a bc a8 07 0c 9d 96 16 60 4f 7a d2 04 26 4a 34 3f e1 8c d7 a3 16"
+hex_dump = "16 03 01 00 92 01 00 00 8e 03 03 f1 c0 40 cf 93 18 f7 b3 e5 e0 aa d2 56 53 15 6b c1 16 5d aa e9 8c 37 6b 2f 71 b2 f9 47 52 29 8d 00 00 02 13 02 01 00 00 63 00 00 00 0e 00 0c 00 00 09 6c 6f 63 61 6c 68 6f 73 74"
 byte_count = len(hex_dump.replace(" ", "")) // 2
 print(f"Number of bytes: {byte_count}")
